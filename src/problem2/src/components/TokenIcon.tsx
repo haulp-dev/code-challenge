@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TOKEN_ICON_BASE } from '../types'
+import { TOKEN_ICON_BASE } from '../configs'
 
 interface TokenIconProps {
   currency: string
@@ -8,57 +8,47 @@ interface TokenIconProps {
 }
 
 export function TokenIcon({ currency, size = 24, className }: TokenIconProps) {
-  const [failed, setFailed] = useState(false)
+  const [failedFor, setFailedFor] = useState('')
+  const failed = failedFor !== '' && failedFor === currency
 
-  if (!currency) {
-    return (
-      <span
-        className={className}
-        style={{
-          width: size,
-          height: size,
-          borderRadius: '50%',
-          background: 'var(--token-fallback-bg)',
-          display: 'inline-block',
-        }}
-        aria-hidden
-      />
-    )
+  const wrapperStyle: React.CSSProperties = {
+    width: size,
+    height: size,
+    borderRadius: '50%',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+    overflow: 'hidden',
   }
 
-  const src = `${TOKEN_ICON_BASE}/${currency}.svg`
-
-  if (failed) {
+  if (!currency || failed) {
     return (
       <span
         className={className}
         style={{
-          width: size,
-          height: size,
-          borderRadius: '50%',
-          background: 'var(--token-fallback-bg)',
-          color: 'var(--token-fallback-fg)',
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          ...wrapperStyle,
+          background: 'rgba(0,0,0,0.15)',
+          color: 'rgba(0,0,0,0.45)',
           fontSize: Math.max(10, size * 0.45),
           fontWeight: 600,
         }}
         aria-hidden
       >
-        {currency.slice(0, 1)}
+        {currency ? currency.charAt(0) : ''}
       </span>
     )
   }
 
   return (
     <img
-      src={src}
+      src={`${TOKEN_ICON_BASE}/${currency}.svg`}
       alt=""
       width={size}
       height={size}
       className={className}
-      onError={() => setFailed(true)}
+      style={wrapperStyle}
+      onError={() => setFailedFor(currency)}
       loading="lazy"
     />
   )

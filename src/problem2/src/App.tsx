@@ -1,12 +1,17 @@
-import { SwapForm } from './components/SwapForm'
-import './App.css'
+import { ConfigProvider } from 'antd'
+import { SwapPage } from './pages/SwapPage'
 
-function App() {
+export default function App() {
   return (
-    <main className="app">
-      <SwapForm />
-    </main>
+    <ConfigProvider
+      theme={{
+        token: {
+          fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+          borderRadius: 12,
+        },
+      }}
+    >
+      <SwapPage />
+    </ConfigProvider>
   )
 }
-
-export default App
