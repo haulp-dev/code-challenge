@@ -7,7 +7,7 @@
 | Problem | Title | Description | Key tech |
 |---------|-------|-------------|----------|
 | [Problem 1](src/problem1/) | Three Ways to Sum | 3 implementations of `sum_to_n` with different algorithmic approaches | JavaScript |
-| [Problem 2](src/problem2/) | Fancy Form (Currency Swap) | Interactive currency swap form with live conversion rates | React 19, TypeScript, Vite 8 |
+| [Problem 2](src/problem2/) | Fancy Form (Currency Swap) | Interactive currency swap form with live conversion rates, i18n | React 19, TypeScript, Vite 5, Ant Design |
 | [Problem 3](src/problem3/) | Messy React (Code Review) | 13 issues identified + refactored version of a buggy React component | TypeScript, React analysis |
 
 ---
@@ -30,17 +30,18 @@ Each includes input validation for non-integer/negative values.
 
 ## Problem 2 — Fancy Form (Currency Swap)
 
-A modern, responsive swap form built from scratch with **React 19 + TypeScript + Vite 8**.
+A currency swap form built with **React 19 + TypeScript + Vite 5 + Ant Design**.
 
 **Highlights:**
-- Live token prices from Switcheo API with deduplication
-- Real-time conversion + exchange rate display
-- Token icons from Switcheo repo with graceful fallback
-- Input validation with accessible error messages
-- Simulated swap submission with loading spinner
-- Dark/Light mode following system preference
-- Responsive design (320 px+)
-- No external UI library — pure CSS
+- Live token prices from Switcheo API (deduplicated by currency)
+- Real-time conversion, exchange rate, price impact, slippage
+- Searchable token selector modal with popular tokens
+- Swap confirmation modal (rate, min. received)
+- Slippage settings (preset + custom)
+- Mock balance + MAX button
+- **i18n**: All UI strings in `locales/en.json` with English keys for easy translation
+- Input validation, loading/error/success states
+- Responsive layout
 
 **Run it:**
 ```bash
@@ -87,15 +88,14 @@ code-challenge/
     │   ├── vite.config.ts
     │   ├── README.md
     │   └── src/
-    │       ├── main.tsx
-    │       ├── App.tsx / App.css
-    │       ├── index.css
-    │       ├── types.ts
-    │       ├── api/prices.ts
-    │       └── components/
-    │           ├── SwapForm.tsx
-    │           ├── TokenIcon.tsx
-    │           └── TokenSelect.tsx
+    │       ├── main.tsx, App.tsx, index.css
+    │       ├── components/     (SwapForm, TokenIcon, TokenSelectModal, SwapConfirmModal, SlippageSettings)
+    │       ├── pages/          (SwapPage)
+    │       ├── services/       (prices.ts)
+    │       ├── hooks/          (useTokenPrices, useSwap)
+    │       ├── utils/          (getMockBalance, i18n)
+    │       ├── configs/, constants/, types/
+    │       └── locales/        (en.json)
     └── problem3/
         ├── readme.md
         ├── ANALYSIS.md                ← Detailed issue breakdown

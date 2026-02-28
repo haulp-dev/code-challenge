@@ -23,14 +23,15 @@ problem2/
 │   │   ├── useTokenPrices.ts
 │   │   └── useSwap.ts
 │   ├── utils/           # Utility functions
-│   │   └── index.ts     # getMockBalance
+│   │   ├── index.ts     # getMockBalance
+│   │   └── i18n.ts      # t(key, params?) for translations
 │   ├── configs/         # Configuration files
 │   │   └── index.ts     # API URLs, token icon base
 │   ├── constants/       # Application constants
 │   │   └── index.ts     # SLIPPAGE_OPTIONS, POPULAR_TOKENS
 │   ├── types/           # TypeScript types
 │   │   └── index.ts
-│   └── locales/         # Translation files
+│   └── locales/         # Translation files (English keys for maintainability)
 │       └── en.json
 ├── package.json
 ├── vite.config.ts
@@ -56,6 +57,13 @@ problem2/
 - Mock balance + MAX button
 - Loading (Spin), error (Alert + retry), success feedback
 - Input validation and dynamic submit button text
+- **i18n**: All UI strings use `locales/en.json` with **English keys** (e.g. `swap.title`, `swap.youPay`, `swap.amountError.invalidNumber`) so adding new languages later is straightforward; use `t('key')` or `t('key', { param: value })` for template strings.
+
+## Locales (i18n)
+
+- **`src/locales/en.json`**: Keys are in English (e.g. `swap.title`, `swap.errors.fetchPricesFailed`) for easy maintenance and future translation.
+- **`src/utils/i18n.ts`**: Exports `t(key, params?)`. Use dot-notation for nested keys; use `{{paramName}}` in the JSON value and pass `{ paramName: value }` for interpolation.
+- To add another language: add e.g. `vi.json` with the same key structure and plug a locale selector into the app (e.g. context or hook that chooses which JSON to use in `t()`).
 
 ## Getting started
 
