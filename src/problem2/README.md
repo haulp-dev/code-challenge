@@ -96,13 +96,13 @@ npm run lint
 
    | Setting | Value |
    |--------|--------|
-   | **Base directory** | `code-challenge/src/problem2` |
+   | **Base directory** | `src/problem2` |
    | **Build command** | `npm run build` |
    | **Publish directory** | `dist` |
    | **Functions directory** | *(leave empty or clear)* |
    | **Package directory** | *(leave empty)* |
 
-   If your repo root is this folder (`problem2`), leave **Base directory** empty and set only Build command and Publish directory.
+   If your repo root is the `problem2` folder itself (single-project repo), leave **Base directory** empty.
 
 4. **Runtime (optional):** Under Build & deploy → Environment → Node version, set **NODE_VERSION** to `20` (or use the variable in `netlify.toml`, which is already set).
 

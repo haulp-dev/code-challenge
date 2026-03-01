@@ -1,5 +1,5 @@
 # Netlify build config — Problem 2 (Currency Swap)
-# Set "Base directory" to this folder when the repo root is above it (e.g. code-challenge/src/problem2)
+# When repo root is this repo, set Base directory in Netlify UI to: src/problem2
 
 [build]
   command   = "npm run build"

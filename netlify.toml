@@ -1,6 +1,6 @@
-# Netlify config for code-challenge repo.
-# Set Base directory in Netlify UI to: code-challenge/src/problem2
-# Then build runs from that folder and publishes its dist.
+# Netlify config for this repo.
+# In Netlify UI set Base directory to: src/problem2
+# (Repo root is the repo contents; there is no "code-challenge" folder inside.)
 
 [build]
   command = "npm run build"
