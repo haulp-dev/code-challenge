@@ -37,3 +37,7 @@ sum_to_n(1)  → 1
 sum_to_n(0)  → 0
 sum_to_n(-3) → 0
 ```
+
+## Solution
+
+Code: [`sum.js`](./sum.js) — exports `sum_to_n_a`, `sum_to_n_b`, `sum_to_n_c`.
