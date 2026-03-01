@@ -2,6 +2,8 @@
 
 Currency swap form built with **React 19 + TypeScript + Vite + Ant Design**.
 
+**Live demo:** [https://stunning-cascaron-dfac87.netlify.app/](https://stunning-cascaron-dfac87.netlify.app/)
+
 ## Project structure
 
 ```
