@@ -1,0 +1,15 @@
+# Netlify build config — Problem 2 (Currency Swap)
+# Set "Base directory" to this folder when the repo root is above it (e.g. code-challenge/src/problem2)
+
+[build]
+  command   = "npm run build"
+  publish   = "dist"
+
+# SPA: serve index.html for all routes
+[[redirects]]
+  from      = "/*"
+  to        = "/index.html"
+  status    = 200
+
+[build.environment]
+  NODE_VERSION = "20"
