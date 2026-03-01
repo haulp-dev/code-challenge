@@ -1,8 +1,8 @@
 # Netlify config for this repo.
-# In Netlify UI set Base directory to: src/problem2
-# (Repo root is the repo contents; there is no "code-challenge" folder inside.)
+# Base directory: app lives in src/problem2 (overrides UI setting).
 
 [build]
+  base    = "src/problem2"
   command = "npm run build"
   publish = "dist"
 
